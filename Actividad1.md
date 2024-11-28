@@ -6,17 +6,17 @@ Entrega un fichero comprimido o un documento pdf con los siguientes pantallazos:
 
 1. Pantallazo donde se vea la creación del contenedor y podamos comprobar que el contenedor está funcionando.
 
-![](images/imagen1.png)
+![](imagenes/imagen1.png)
 2. Pantallazo donde se vea el acceso al servidor web utilizando un navegador web (recuerda que tienes que acceder a la ip del ordenador donde tengas instalado docker)
 
-![](images/imagen2.png)
+![](imagenes/imagen2.png)
 
 
 3. Pantallazo donde se vean las imágenes que tienes en tu registro local.
 
 
-![](images/imagen3.png)
+![](imagenes/imagen3.png)
 
 4. Pantallazo donde se vea como se elimina el contenedor (recuerda que antes debe estar parado el contenedor).
 
-![](images/imagen4.png)
+![](imagenes/imagen4.png)
