@@ -8,13 +8,28 @@
 
     Ejecutamos los comandos de creacion de volumens 
       ```
-        docker volume volumen_datos
-        docker volume volumne_web
+        docker volume create volumen_datos
+        docker volume create volumne_web
       ```
+    Verificamos la creación de los volumenes 
+
+      ```
+        docker volume ls
+
+      ```
+
      ![](imagenes/imagenesACT3/imagen1.png) 
+
+
 
 2. **Arrancar contenedores:**
    - Iniciar un contenedor llamado `c1` con la imagen `php:7.4-apache` que monte el volumen `volumen_web` en la ruta `/var/www/html` y que esté disponible en el puerto `8080`.
+     Para inicar el contenedor c1 sería.
+      ```
+       docker run -d --name c1 -p 8080:80 -v columen_web:/var/www/html php:7.4-apache
+      ```
+     ![](imagenes/imagenesACT3/imagen2.png) 
+
    - Iniciar un contenedor llamado `c2` con la imagen `mariadb` que monte el volumen `volumen_datos` en la ruta `/var/lib/mysql`, estableciendo la contraseña de root como `admin`.
 3. **Intentar borrar el volumen `volumen_datos`:**
    - Detener y eliminar el contenedor `c2`, luego intentar eliminar el volumen.
