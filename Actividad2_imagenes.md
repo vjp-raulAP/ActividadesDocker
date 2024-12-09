@@ -3,14 +3,21 @@
 ## Servidor web
 
 1. Arranca un contenedor que ejecute una instancia de la imagen `php:7.4-apache`, que se llame **web** y que sea accesible desde tu equipo en el puerto 8000.
+     
+     El primer paso seá crear  una carpeta donde meteremos el contenedor **docker-compose.yml** y el fichero **web** donde meteremos er archivo **index.html** y **index.php**
 
+
+    ![](imagenes/imagenesACT2/imagen1.png)
+
+    ![](imagenes/imagenesACT2/imagen2.png)
+    
 2. Coloca en el directorio raíz del servicio web (`/var/www/html`) de dicho contenedor un fichero llamado `index.html` con el siguiente contenido:
 
     ```html
-    <h1>HOLA SOY XXXXXXXXXXXXXXX</h1>
+    <h1>HOLA SOY RAUL ALBALAT PEREZ</h1>
     ```
 
-   Deberás sustituir **XXXXXXXXXXXXX** por tu nombre y tus apellidos.
+   
 
 3. Coloca en ese mismo directorio raíz un archivo llamado `index.php` con el siguiente contenido:
 
