@@ -90,8 +90,10 @@
     ```
         sudo apt update && sudo apt install mariadb-client -y
     ```
+
+    
 4. Conecto al servidor mariadb ya que arranque el servicio anteriormente.
-        ![](imagenes/imagenesACT2/imagen8.png)
+        ![](imagenes/imagenesACT2/imagen9.png)
     
 
 ## Entregables
