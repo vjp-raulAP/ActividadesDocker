@@ -24,6 +24,7 @@
 
 2. **Arrancar contenedores:**
    - Iniciar un contenedor llamado `c1` con la imagen `php:7.4-apache` que monte el volumen `volumen_web` en la ruta `/var/www/html` y que esté disponible en el puerto `8080`.
+
      Para inicar el contenedor c1 sería.
       ```
        docker run -d --name c1 -p 8080:80 -v columen_web:/var/www/html php:7.4-apache
@@ -39,6 +40,7 @@
 
 
    - Iniciar un contenedor llamado `c2` con la imagen `mariadb` que monte el volumen `volumen_datos` en la ruta `/var/lib/mysql`, estableciendo la contraseña de root como `admin`.
+
      Para iniciar el contenedor c2 sería.
       ```
        docker run -d --name c2 -e MYSQL_ROOT_PASSWORD=admin -v volumen_datos:/var/lib/mysql mariadb
@@ -55,6 +57,7 @@
 
 3. **Intentar borrar el volumen `volumen_datos`:**
    - Detener y eliminar el contenedor `c2`, luego intentar eliminar el volumen.
+   
      Para detener y eliminar el contenedor `c2` hacemos lo siguiente.
        ```
          docker stop c2
