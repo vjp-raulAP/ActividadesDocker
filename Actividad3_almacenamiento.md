@@ -30,9 +30,46 @@
       ```
      ![](imagenes/imagenesACT3/imagen2.png) 
 
+     Verificamos que se creo correctamente el container.
+      ```
+       docker container ls
+      ```
+     ![](imagenes/imagenesACT3/imagen3.png)
+
+
+
    - Iniciar un contenedor llamado `c2` con la imagen `mariadb` que monte el volumen `volumen_datos` en la ruta `/var/lib/mysql`, estableciendo la contraseña de root como `admin`.
+     Para iniciar el contenedor c2 sería.
+      ```
+       docker run -d --name c2 -e MYSQL_ROOT_PASSWORD=admin -v volumen_datos:/var/lib/mysql mariadb
+      ```
+     ![](imagenes/imagenesACT3/imagen4.png)
+
+     Verificamos que se creo correctamente el container.
+
+     ![](imagenes/imagenesACT3/imagen5.png)
+
+
+
+
+
 3. **Intentar borrar el volumen `volumen_datos`:**
    - Detener y eliminar el contenedor `c2`, luego intentar eliminar el volumen.
+     Para detener y eliminar el contenedor `c2` hacemos lo siguiente.
+       ```
+         docker stop c2
+         docker rm c2
+       ```
+     ![](imagenes/imagenesACT3/imagen6.png)  
+
+     Para borrar el volumen usamos:
+       
+       ```
+         docker volume rm volumen_datos
+       ``` 
+     ![](imagenes/imagenesACT3/imagen7.png)
+
+
 4. **Trabajar con el contenedor `c1`:**
    - Crear o copiar un archivo `index.html` dentro del contenedor `c1`. Verificar que el contenido es accesible.
 5. **Crear un nuevo contenedor `c3`:**
