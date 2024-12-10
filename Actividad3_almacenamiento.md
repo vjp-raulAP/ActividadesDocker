@@ -137,13 +137,44 @@
      <h1>HOLA SOY XXXXXX</h1>
      ```
      Sustituye `XXXXXX` por tu nombre.
+
+    ![](imagenes/imagenesACT3/imagen13.png)
+
 2. **Arrancar contenedores:**
    - Crear dos contenedores basados en la imagen `php:7.4-apache` que realicen un **bind mount** de la carpeta `saludo` a la carpeta `/var/www/html` en los contenedores.
      - Contenedor `c1`: disponible en el puerto `8181`.
+
+      Para el contendor `c1` ejecutamos el siguiente comando.
+        ```
+          docker run -d --name c1 -p 8181:80 -v ~/saludo:/var/www/html php:7.4-apache
+        ```
+
+       ![](imagenes/imagenesACT3/imagen14.png)    
+
      - Contenedor `c2`: disponible en el puerto `8282`.
+
+      Para el contendor `c2` ejecutamos el siguiente comando.
+
+        ```
+          docker run -d --name c2 -p 8282:80 -v ~/saludo:/var/www/html php:7.4-apache
+        ```
+       ![](imagenes/imagenesACT3/imagen15.png) 
+
+    - Comprobamos que podemos acceder a ambos contenedores.
+
+       ![](imagenes/imagenesACT3/imagen16.png) 
+
+       ![](imagenes/imagenesACT3/imagen17.png) 
+      
+
 3. **Modificar el archivo:**
    - Modificar el contenido del archivo `index.html` en la carpeta `saludo`.
+     
+
    - Verificar que los cambios se reflejan en ambos contenedores sin necesidad de reiniciarlos.
+    ![](imagenes/imagenesACT3/imagen18.png) 
+    ![](imagenes/imagenesACT3/imagen19.png) 
+
 
 ### **Pantallazos a Entregar**
 1. Pantallazo con la orden para arrancar el contenedor `c1` (puerto `8181`) realizando el bind mount.
