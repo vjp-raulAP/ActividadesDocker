@@ -57,7 +57,7 @@
 
 3. **Intentar borrar el volumen `volumen_datos`:**
    - Detener y eliminar el contenedor `c2`, luego intentar eliminar el volumen.
-   
+
      Para detener y eliminar el contenedor `c2` hacemos lo siguiente.
        ```
          docker stop c2
@@ -75,8 +75,48 @@
 
 4. **Trabajar con el contenedor `c1`:**
    - Crear o copiar un archivo `index.html` dentro del contenedor `c1`. Verificar que el contenido es accesible.
+     
+      Accedo al contenedor `c1` con el comando **docker exec** y verifico que es accesible.
+
+       ```
+         docker exec -it c1 bash
+       ``` 
+
+      Dentro del contenedor `c1` creo un **index.html**
+       ```
+         echo "<h1>HOLA SOY RAUL ALBALAT PEREZ</h1>" > /var/www/html/index.html
+       ``` 
+
+        ![](imagenes/imagenesACT3/imagen8.png)
+
+      Desde el navegador accedo a http://localhost:8080 para verificar que se puede acceder.
+
+        ![](imagenes/imagenesACT3/imagen9.png)
+
+
+        
 5. **Crear un nuevo contenedor `c3`:**
    - Eliminar el contenedor `c1` y crear otro contenedor `c3` con las mismas características, sirviendo en el puerto `8081`.
+    
+     Eliminamos el contenedor  `c1` como antes hicimos con `c2` 
+
+       ```
+         docker stop c1
+         docker rm c1
+       ```
+      ![](imagenes/imagenesACT3/imagen10.png)
+
+     Creamos el contenedor `c3` y lo arrancamos.
+
+       ```
+         docker run -d --name c3 -p 8081:80 -v volumen_web:/var/www/html php:7.4-apache
+       ```
+       ![](imagenes/imagenesACT3/imagen11.png)
+
+
+     Verificamos el acceso a ejecutando en el navegador http://localhost:8081. Comprobamos que podemos seguir viendo el index.html
+         
+       ![](imagenes/imagenesACT3/imagen12.png)   
 
 ### **Pantallazos a Entregar**
 1. Pantallazo mostrando los dos volúmenes creados.
