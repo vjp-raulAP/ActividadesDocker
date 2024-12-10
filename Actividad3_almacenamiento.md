@@ -170,6 +170,7 @@
 3. **Modificar el archivo:**
    - Modificar el contenido del archivo `index.html` en la carpeta `saludo`.
      
+     ![](imagenes/imagenesACT3/imagen20.png) 
 
    - Verificar que los cambios se reflejan en ambos contenedores sin necesidad de reiniciarlos.
     ![](imagenes/imagenesACT3/imagen18.png) 
