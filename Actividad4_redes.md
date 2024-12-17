@@ -64,15 +64,17 @@ Configurar dos redes Docker tipo **BRIDGE**, crear dos contenedores **Ubuntu 20.
 
 ![](imagenes/imagenesACT4/imagen3.png)
  
-
-  **Instalar `ping` en u1**:
+ 
+  **Instalamos `ping` en u1**:
   ```bash
   docker exec -it u1 bash
   apt update && apt install -y inetutils-ping
   exit
   ```
 
-- **Contenedor u2**:
+![](imagenes/imagenesACT4/imagen4.png)
+
+- **Instalamos el Contenedor u2**:
   - Imagen: `ubuntu:20.04`
   - Nombre: `u2`
   - Hostname: `host2`
@@ -83,32 +85,44 @@ Configurar dos redes Docker tipo **BRIDGE**, crear dos contenedores **Ubuntu 20.
   docker run -dit --name u2 --hostname host2 \
     --network red2 ubuntu:20.04
   ```
+![](imagenes/imagenesACT4/imagen5.png)
 
-  **Instalar `ping` en u2**:
+  **Instalamos `ping` en el contenedor u2**:
   ```bash
   docker exec -it u2 bash
   apt update && apt install -y inetutils-ping
   exit
   ```
 
+![](imagenes/imagenesACT4/imagen6.png)
 ---
 
-#### 3. **Verificar configuraciones de red**
+#### Paso 3. **Verificamos las configuraciones de red**
 
-- Configuración de red de `u1`:
+- Accedemos al contenedor **u1** y **u2** y actualizamos los repositorios e instalamos *iproute2*
+  ```bash
+  docker exec -it u1 bash
+  apt update && apt install -y iproute2
+  ```
+  ```bash
+  docker exec -it u2 bash
+  apt update && apt install -y iproute2
+  ```
+
+- Vemos Configuración de red de `u1`:
   ```bash
   docker exec -it u1 ip a
   ```
-- Configuración de red de `u2`:
+- Vemos Configuración de red de `u2`:
   ```bash
   docker exec -it u2 ip a
   ```
-
+![](imagenes/imagenesACT4/imagen7.png)
 ---
 
-#### 4. **Probar la conectividad inicial**
+#### Paso 4. **Probamos la conectividad inicial**
 
-- Desde `u1` intentar hacer **ping** a `u2`:
+- Desde `u1` intentar hacer **ping** a `u2` para probar que se pueden conectar. Esto **fallará** ya que cada red funciona como una subred y docker no permite comunicacion entre ellas a no ser que se conecte explicitamente a un contenedor varias redes con `docker network connect`
   ```bash
   docker exec -it u1 ping host2
   docker exec -it u1 ping <IP_de_u2>
@@ -118,10 +132,10 @@ Configurar dos redes Docker tipo **BRIDGE**, crear dos contenedores **Ubuntu 20.
   docker exec -it u2 ping host1
   docker exec -it u2 ping 172.28.0.10
   ```
-
+![](imagenes/imagenesACT4/imagen8.png)
 ---
 
-#### 5. **Conectar `u1` a `red2` y verificar conectividad**
+#### Paso 5. **Conectamos  `u1` a `red2` y verificamos que ya si tenemos conectividad**
 
 - Conectar `u1` a `red2`:
   ```bash
@@ -133,7 +147,7 @@ Configurar dos redes Docker tipo **BRIDGE**, crear dos contenedores **Ubuntu 20.
   docker exec -it u1 ping host2
   docker exec -it u1 ping <IP_de_u2>
   ```
-
+![](imagenes/imagenesACT4/imagen9.png)
 ---
 
 #### **Capturas necesarias**
@@ -146,25 +160,26 @@ Configurar dos redes Docker tipo **BRIDGE**, crear dos contenedores **Ubuntu 20.
 
 ### Ejercicio 2: Despliegue de Nextcloud + MariaDB
 
+Vamos a desplegar la aplicación nextcloud con una base de datos (puedes elegir mariadb o PostgreSQL) (NOTA: Para que no te de errores utiiliza la imagen mariadb:10.5). Te puede servir el ejercicio que hemos realizado para desplegar Wordpress. Para ello sigue los siguientes pasos:
+
 #### **Objetivo:**
 Desplegar la aplicación **Nextcloud** junto con una base de datos **MariaDB**, asegurando la persistencia de datos.
 
 ---
 
-### **Pasos a realizar**:
-
-#### 1. **Crear la red Docker**
+#### Paso 1. **Creamos la red Docker**
 
 **Comando**:
 ```bash
 docker network create nextcloud_net
 ```
+![](imagenes/imagenesACT4/imagen10.png)
 
 ---
 
-#### 2. **Crear el contenedor de MariaDB**
+#### Paso 2. **Creamos el contenedor de MariaDB**
 
-**Configuración**:
+**Configuración del contenedor mariaDB y variables de entorno**:
 - Nombre: `mariadb_container`
 - Red: `nextcloud_net`
 - Variables de entorno:
@@ -185,12 +200,13 @@ docker run -d --name mariadb_container \
   -v mariadb_data:/var/lib/mysql \
   mariadb:10.5
 ```
+![](imagenes/imagenesACT4/imagen11.png)
 
 ---
 
-#### 3. **Crear el contenedor de Nextcloud**
+#### Paso 3. **Creamos  el contenedor de Nextcloud**
 
-**Configuración**:
+**Configuración del contenedor nextcloud y las variables de entorno**:
 - Nombre: `nextcloud_container`
 - Red: `nextcloud_net`
 - Variables de entorno:
@@ -213,12 +229,20 @@ docker run -d --name nextcloud_container \
   -p 8080:80 \
   nextcloud
 ```
-
+![](imagenes/imagenesACT4/imagen12.png)
 ---
 
-#### 4. **Acceder a la aplicación Nextcloud**
-- Abre un navegador y accede a: `http://localhost:8080`.
-- Configura la cuenta de administrador y verifica la conexión con la base de datos.
+#### 4. **Accedemos a la aplicación Nextcloud**
+- Abrimos un navegador y accedemos a: `http://localhost:8080`.
+ 
+ ![](imagenes/imagenesACT4/imagen13.png)
+
+- Configuramos una cuenta de usuario **ralbalatp01**y verificamos la conexión con la base de datos. 
+
+![](imagenes/imagenesACT4/imagen14.png)
+
+
+![](imagenes/imagenesACT4/imagen15.png)
 
 ---
 
