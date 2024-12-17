@@ -11,13 +11,16 @@ Configurar dos redes Docker tipo **BRIDGE**, crear dos contenedores **Ubuntu 20.
 
 ### **Pasos a realizar**:
 
-#### 1. **Crear las redes Docker**
+#### Paso 1. **Creamos las redes Docker**
 
+  El primer paso que vamos a realizar será crea una **red1* con las siguientes especificaciones:
 - **Red1**:
   - Nombre: `red1`
   - Dirección de red: `172.28.0.0`
   - Máscara de red: `255.255.0.0`
   - Gateway: `172.28.0.1`
+  
+  Para ello adjunto el comando que vamos a usar.
 
   **Comando**:
   ```bash
@@ -26,6 +29,9 @@ Configurar dos redes Docker tipo **BRIDGE**, crear dos contenedores **Ubuntu 20.
     --subnet 172.28.0.0/16 \
     --gateway 172.28.0.1 red1
   ```
+![](imagenes/imagenesACT4/imagen1.png)
+
+ Creamos la segunda red la cual llamamos **red2**
 
 - **Red2**:
   - Nombre: `red2`
@@ -35,12 +41,15 @@ Configurar dos redes Docker tipo **BRIDGE**, crear dos contenedores **Ubuntu 20.
   ```bash
   docker network create --driver bridge red2
   ```
-
+![](imagenes/imagenesACT4/imagen2.png)
+ 
 ---
 
-#### 2. **Crear los contenedores**
+#### Paso 2. **Creamos los contenedores**
 
-- **Contenedor u1**:
+ El siguiente paso será la creación de contenedores **u1** y **u2** que alojará ubuntu:20.04.
+ 
+- **Contenedor u1 en red1 y con IP fija**:
   - Imagen: `ubuntu:20.04`
   - Nombre: `u1`
   - Hostname: `host1`
@@ -52,6 +61,9 @@ Configurar dos redes Docker tipo **BRIDGE**, crear dos contenedores **Ubuntu 20.
   docker run -dit --name u1 --hostname host1 \
     --network red1 --ip 172.28.0.10 ubuntu:20.04
   ```
+
+![](imagenes/imagenesACT4/imagen3.png)
+ 
 
   **Instalar `ping` en u1**:
   ```bash
