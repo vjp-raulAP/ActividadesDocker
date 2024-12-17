@@ -232,7 +232,7 @@ docker run -d --name nextcloud_container \
 ![](imagenes/imagenesACT4/imagen12.png)
 ---
 
-#### 4. **Accedemos a la aplicación Nextcloud**
+#### Paso 4. **Accedemos a la aplicación Nextcloud y vemos que funciona**
 - Abrimos un navegador y accedemos a: `http://localhost:8080`.
  
  ![](imagenes/imagenesACT4/imagen13.png)
