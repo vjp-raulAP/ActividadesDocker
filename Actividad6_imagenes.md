@@ -55,14 +55,14 @@ docker run -it ralbalatp0/comandos_redes
 
 ## Ejercicio 2: Creación de una imagen a partir de un Dockerfile
  Creamos la carperta `ejercicioImagenes' donde meteremos tanto el **index.html** como **Dockerfile**
-### 1. Crear la página web estática
-Crea un archivo `index.html` con el siguiente contenido:
+### Paso 1. Crear la página web estática
+Crea un archivo `index.html` con el siguiente contenido: 
 ```html
     <h1>¡Hola, Docker! soy Raul</h1>
 ```
 ![](imagenes/imagenesACT6/imagen7.png)
 
-### 2. Escribir el Dockerfile
+### Paso 2. Escribir el Dockerfile
 En el mismo directorio, crea un archivo `Dockerfile` con el siguiente contenido:
 ```Dockerfile
 FROM nginx:alpine
@@ -70,14 +70,14 @@ COPY index.html /usr/share/nginx/html/index.html
 ```
 ![](imagenes/imagenesACT6/imagen8.png)
 
-### 3. Crear la imagen
+### Paso 3. Crear la imagen
 Ejecuta el siguiente comando desde el directorio donde están los archivos:
 ```bash
 docker build -t ralbalatp01/mi_servidor_web .
 ```
 ![](imagenes/imagenesACT6/imagen9.png)
 
-### 4. Subir la imagen a Docker Hub
+### Paso 4. Subir la imagen a Docker Hub
 Inicia sesión si es necesario:
 ```bash
 docker login
@@ -90,9 +90,9 @@ docker push ralbalatp01/mi_servidor_web
 
  Verificamos que se ha subido la imagen.
 
- ![](imagenes/imagenesACT6/dockerhub.png)
+ ![](imagenes/imagenesACT6/.png)
 
-### 5. Descargar y probar la imagen
+### Paso 5. Descargar y probar la imagen
 Elimina la imagen local (opcional):
 ```bash
 docker rmi ralbalatp01/mi_servidor_web
