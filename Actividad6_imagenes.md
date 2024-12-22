@@ -37,7 +37,7 @@ docker push ralbalatp01/comandos_redes
 
 ![](imagenes/imagenesACT6/imagen5.png)
 
-### 5. Descargar y probar la imagen
+### Paso 5. Descargar y probar la imagen
 Elimina la imagen local (opcional):
 ```bash
 docker rmi ralbalatp01/comandos_redes
@@ -54,19 +54,13 @@ docker run -it ralbalatp0/comandos_redes
 ---
 
 ## Ejercicio 2: Creación de una imagen a partir de un Dockerfile
-
+ Creamos la carperta `ejercicioImagenes' donde meteremos tanto el **index.html** como **Dockerfile**
 ### 1. Crear la página web estática
 Crea un archivo `index.html` con el siguiente contenido:
 ```html
-<html>
-<head>
-    <title>Mi Servidor Web</title>
-</head>
-<body>
-    <h1>¡Hola, Docker!</h1>
-</body>
-</html>
+    <h1>¡Hola, Docker! soy Raul</h1>
 ```
+![](imagenes/imagenesACT6/imagen7.png)
 
 ### 2. Escribir el Dockerfile
 En el mismo directorio, crea un archivo `Dockerfile` con el siguiente contenido:
@@ -74,12 +68,14 @@ En el mismo directorio, crea un archivo `Dockerfile` con el siguiente contenido:
 FROM nginx:alpine
 COPY index.html /usr/share/nginx/html/index.html
 ```
+![](imagenes/imagenesACT6/imagen8.png)
 
 ### 3. Crear la imagen
 Ejecuta el siguiente comando desde el directorio donde están los archivos:
 ```bash
-docker build -t <tu_usuario_docker_hub>/mi_servidor_web .
+docker build -t ralbalatp01/mi_servidor_web .
 ```
+![](imagenes/imagenesACT6/imagen9.png)
 
 ### 4. Subir la imagen a Docker Hub
 Inicia sesión si es necesario:
@@ -88,23 +84,36 @@ docker login
 ```
 Sube la imagen:
 ```bash
-docker push <tu_usuario_docker_hub>/mi_servidor_web
+docker push ralbalatp01/mi_servidor_web
 ```
+![](imagenes/imagenesACT6/imagen10.png)
+
+ Verificamos que se ha subido la imagen.
+
+ ![](imagenes/imagenesACT6/dockerhub.png)
 
 ### 5. Descargar y probar la imagen
 Elimina la imagen local (opcional):
 ```bash
-docker rmi <tu_usuario_docker_hub>/mi_servidor_web
+docker rmi ralbalatp01/mi_servidor_web
 ```
+![](imagenes/imagenesACT6/imagen11.png)
+
 Descarga la imagen desde Docker Hub:
 ```bash
-docker pull <tu_usuario_docker_hub>/mi_servidor_web
+docker pull ralbalatp01/mi_servidor_web
 ```
 Crea un contenedor:
 ```bash
-docker run -d -p 8080:80 <tu_usuario_docker_hub>/mi_servidor_web
+docker run -d -p 8080:80 ralbalatp01/mi_servidor_web
 ```
+
+![](imagenes/imagenesACT6/imagen11.png)
+
+
 Verifica la página accediendo a `http://localhost:8080`.
+
+![](imagenes/imagenesACT6/imagen13.png)
 
 ---
 
